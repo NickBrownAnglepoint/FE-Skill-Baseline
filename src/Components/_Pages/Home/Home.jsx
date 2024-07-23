@@ -3,7 +3,8 @@ import useGetData from '../../_Utils/useGetData'
 
 import Dogs from '../../../../__Data__/Dogs.json'
 
-import { Table, Box, Card, Flex, Avatar, Text, Grid } from '@radix-ui/themes'
+import { Table, Box, Card, Flex, Avatar, Text, Grid, IconButton } from '@radix-ui/themes'
+import {CircleIcon} from '@radix-ui/react-icons'
 
 function Home() {
   const [userData, setUserData] = useState();
@@ -45,23 +46,11 @@ function Home() {
                   <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
                 </Table.Row>
               </Table.Header>
-
+              
               <Table.Body>
                 <Table.Row>
                   <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
                   <Table.Cell>danilo@example.com</Table.Cell>
-                  <Table.Cell>Developer</Table.Cell>
-                </Table.Row>
-
-                <Table.Row>
-                  <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
-                  <Table.Cell>zahra@example.com</Table.Cell>
-                  <Table.Cell>Admin</Table.Cell>
-                </Table.Row>
-
-                <Table.Row>
-                  <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
-                  <Table.Cell>jasper@example.com</Table.Cell>
                   <Table.Cell>Developer</Table.Cell>
                 </Table.Row>
               </Table.Body>
@@ -74,7 +63,7 @@ function Home() {
             (userData.results.map((element, index) =>
             (
               <Box key={`${element.id.name}_${element.id.value}_${index}`} maxWidth='1240px'>
-                <Card style={{margin: '0.5em'}}>
+                <Card style={{margin: '0.5em', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                   <Flex gap='3' align='center'>
                     <Avatar
                       size='3'
@@ -93,6 +82,9 @@ function Home() {
                         Dog: {element.dogName} ({element.dogBreed}, {element.dogSize})
                       </Text>
                     </Box>
+                  </Flex>
+                  <Flex>
+                    <CircleIcon width="18" height="18" cursor='pointer' />
                   </Flex>
                 </Card>
               </Box>
