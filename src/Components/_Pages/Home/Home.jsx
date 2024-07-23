@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useGetData from '../../_Utils/useGetData'
 
 import Dogs from '../../../../__Data__/Dogs.json'
@@ -46,7 +46,7 @@ function Home() {
                   <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
                 </Table.Row>
               </Table.Header>
-              
+
               <Table.Body>
                 <Table.Row>
                   <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>

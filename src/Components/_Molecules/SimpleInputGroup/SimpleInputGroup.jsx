@@ -1,5 +1,3 @@
-import React from 'react'
-
 import './SimpleInputGroup.style.css'
 
 import { TextField, Button } from '@radix-ui/themes'
