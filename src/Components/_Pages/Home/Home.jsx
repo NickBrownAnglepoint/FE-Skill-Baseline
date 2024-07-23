@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import useGetData from '../_Utils/useGetData'
+import useGetData from '../../_Utils/useGetData'
 
-import Dogs from './../../../__Data__/Dogs.json'
+import Dogs from '../../../../__Data__/Dogs.json'
 
 import { Table, Box, Card, Flex, Avatar, Text, Grid } from '@radix-ui/themes'
 
-function Body() {
+function Home() {
   const [userData, setUserData] = useState();
 
   const { data, loading, error } = useGetData('https://randomuser.me/api/?results=12');
@@ -107,4 +107,4 @@ function Body() {
 
 }
 
-export default Body
+export default Home
