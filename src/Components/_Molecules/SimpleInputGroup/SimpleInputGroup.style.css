@@ -1,0 +1,13 @@
+.simple-input-group__wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.simple-input-group__input{
+    padding-right: 0.25em;
+}
+
+.simple-input-group__button{
+    padding-left: 0.25em;
+}

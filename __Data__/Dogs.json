@@ -1,0 +1,23 @@
+[
+    { "dogName": "Buddy", "dogBreed": "Labrador Retriever", "dogSize": "Large" },
+    { "dogName": "Max", "dogBreed": "German Shepherd", "dogSize": "Large" },
+    { "dogName": "Bella", "dogBreed": "Golden Retriever", "dogSize": "Large" },
+    { "dogName": "Charlie", "dogBreed": "French Bulldog", "dogSize": "Small" },
+    { "dogName": "Lucy", "dogBreed": "Bulldog", "dogSize": "Medium" },
+    { "dogName": "Molly", "dogBreed": "Beagle", "dogSize": "Medium" },
+    { "dogName": "Daisy", "dogBreed": "Poodle", "dogSize": "Medium" },
+    { "dogName": "Bailey", "dogBreed": "Rottweiler", "dogSize": "Large" },
+    { "dogName": "Lola", "dogBreed": "Yorkshire Terrier", "dogSize": "Small" },
+    { "dogName": "Rocky", "dogBreed": "Boxer", "dogSize": "Large" },
+    { "dogName": "Sophie", "dogBreed": "Dachshund", "dogSize": "Small" },
+    { "dogName": "Sadie", "dogBreed": "Siberian Husky", "dogSize": "Large" },
+    { "dogName": "Maggie", "dogBreed": "Great Dane", "dogSize": "Large" },
+    { "dogName": "Riley", "dogBreed": "Doberman Pinscher", "dogSize": "Large" },
+    { "dogName": "Zeus", "dogBreed": "Shih Tzu", "dogSize": "Small" },
+    { "dogName": "Coco", "dogBreed": "Pomeranian", "dogSize": "Small" },
+    { "dogName": "Luna", "dogBreed": "Australian Shepherd", "dogSize": "Medium" },
+    { "dogName": "Jack", "dogBreed": "Cocker Spaniel", "dogSize": "Medium" },
+    { "dogName": "Roxy", "dogBreed": "Chihuahua", "dogSize": "Small" },
+    { "dogName": "Toby", "dogBreed": "Border Collie", "dogSize": "Medium" }
+  ]
+  
