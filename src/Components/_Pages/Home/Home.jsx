@@ -1,15 +1,29 @@
 import { useEffect, useState } from 'react'
 import useGetData from '../../_Utils/useGetData'
+import { useAtom } from 'jotai'
 
 import Dogs from '../../../../__Data__/Dogs.json'
+import { AppointmentAtom } from '../../../atoms/AppointmentAtom'
 
 import { Table, Box, Card, Flex, Avatar, Text, Grid, IconButton } from '@radix-ui/themes'
 import {CircleIcon} from '@radix-ui/react-icons'
 
 function Home() {
   const [userData, setUserData] = useState();
-
   const { data, loading, error } = useGetData('https://randomuser.me/api/?results=12');
+
+  const [appointments, setAppointments] = useAtom(AppointmentAtom)
+
+  const handleAddNewAppointment = (newApptUser) => {
+    setAppointments([...appointments, newApptUser]);
+    let mutatedUserData = userData.results.filter((user) => {
+      let notNewApptUser = JSON.stringify(user) != JSON.stringify(newApptUser);
+      if (notNewApptUser) return user;
+    })
+    setUserData({ ...userData, results: mutatedUserData });
+    console.log(userData);
+    
+  }
 
   useEffect(() => {
     if (data) {
@@ -41,19 +55,33 @@ function Home() {
             <Table.Root>
               <Table.Header>
                 <Table.Row>
-                  <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>Owner</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>Dog</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>Phone</Table.ColumnHeaderCell>
                 </Table.Row>
               </Table.Header>
 
+              {appointments.length > 0 ?
+            (
+              appointments.map((element, index) =>
+              (
+                <Table.Body key={index}>
+                  <Table.Row>
+                      <Table.RowHeaderCell>{`${element.name.first} ${element.name.last}`}</Table.RowHeaderCell>
+                    <Table.Cell>{`${element.dogName} (${element.dogBreed})`}</Table.Cell>
+                    <Table.Cell>{element.phone}</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              ))
+            ) : (
               <Table.Body>
-                <Table.Row>
-                  <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
-                  <Table.Cell>danilo@example.com</Table.Cell>
-                  <Table.Cell>Developer</Table.Cell>
-                </Table.Row>
-              </Table.Body>
+              <Table.Row>
+                <Table.Cell colSpan={3}>No New Appointments</Table.Cell>
+              </Table.Row>
+            </Table.Body>
+            )}
+
+
               </Table.Root>
             </Card>
         </Flex>
@@ -84,7 +112,7 @@ function Home() {
                     </Box>
                   </Flex>
                   <Flex>
-                    <CircleIcon width="18" height="18" cursor='pointer' />
+                    <CircleIcon width="18" height="18" cursor='pointer' onClick={() => { handleAddNewAppointment(element) }} />
                   </Flex>
                 </Card>
               </Box>
