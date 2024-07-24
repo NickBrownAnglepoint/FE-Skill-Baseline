@@ -11,17 +11,17 @@ This repo will also use a rebase git strategy and conventional commits.
 _Skills that have been demonstrated will be marked with a ✅ emoji and will have a corresponding commit message._
 
 1. ✅ Be able to compose simple functional components at will. "Simple" meaning:
-    1. ✅Declare component and export correctly
-        1. ✅named exports for within an app 
-        2. ✅default exports for exposed remote modules
-    2. Work with Props
-    3. ✅Return JSX
-    4.✅ Import any library or file you need with correct types
+    1. ✅ Declare component and export correctly
+        1. ✅ named exports for within an app 
+        2. ✅ default exports for exposed remote modules
+    2. ✅ Work with Props
+    3. ✅ Return JSX
+    4. ✅ Import any library or file you need with correct types
     5. Be able to use:
         1. ✅useState
         2. ✅useEffect
         3. useRef (for finding an HTML element AND for storing mutable data)
-    6. ✅Apply styles (and specifically css modules) and typescript types at will
+    6. ✅ Apply styles (and specifically css modules) and typescript types at will
 2. Have a working understanding of how the react reconciler relates to your component structure
     1. When does an effect execute?
     2. When is a component rendered
@@ -29,7 +29,7 @@ _Skills that have been demonstrated will be marked with a ✅ emoji and will hav
 3. ✅Be able to use and create custom hooks
 4. Have a high level understanding of React's Error Boundaries
 5. Understand Jest testing for basic components and hooks (training on thursday)
-6. Be able to write and implement types for basic components
+6. (Existing working knowledge from Angular ✅) Be able to write and implement types for basic components
     1. write and implement intersections
     2. write and implement unions
     3. implement generics
