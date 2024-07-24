@@ -5,8 +5,9 @@ import { useAtom } from 'jotai'
 import Dogs from '../../../../__Data__/Dogs.json'
 import { AppointmentAtom } from '../../../atoms/AppointmentAtom'
 
-import { Table, Box, Card, Flex, Avatar, Text, Grid, IconButton } from '@radix-ui/themes'
-import {CircleIcon} from '@radix-ui/react-icons'
+import { Grid} from '@radix-ui/themes'
+import UserCard from '../../_Molecules/UserCard/UserCard'
+import SimpleTable from '../../_Molecules/SimpleTable/SimpleTable'
 
 function Home() {
   const [userData, setUserData] = useState();
@@ -21,8 +22,6 @@ function Home() {
       if (notNewApptUser) return user;
     })
     setUserData({ ...userData, results: mutatedUserData });
-    console.log(userData);
-    
   }
 
   useEffect(() => {
@@ -48,77 +47,31 @@ function Home() {
 
   return (
     <>
-      <Grid columns='2' gap='6' rows='repeat(1,64)' display='flex' align='start' justify='center' width='auto' style={{margin: '1em'}}>
-        <Flex direction={'column'} justify='center' align='start' gap='1'>
-          <h3>Upcoming Appointments</h3>
-          <Card style={{width: '100%'}}>
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell>Owner</Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell>Dog</Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell>Phone</Table.ColumnHeaderCell>
-                </Table.Row>
-              </Table.Header>
-
-              {appointments.length > 0 ?
-            (
-              appointments.map((element, index) =>
-              (
-                <Table.Body key={index}>
-                  <Table.Row>
-                      <Table.RowHeaderCell>{`${element.name.first} ${element.name.last}`}</Table.RowHeaderCell>
-                    <Table.Cell>{`${element.dogName} (${element.dogBreed})`}</Table.Cell>
-                    <Table.Cell>{element.phone}</Table.Cell>
-                  </Table.Row>
-                </Table.Body>
-              ))
-            ) : (
-              <Table.Body>
-              <Table.Row>
-                <Table.Cell colSpan={3}>No New Appointments</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            )}
-
-
-              </Table.Root>
-            </Card>
-        </Flex>
+      <Grid columns='2' gap='6' rows='repeat(1,64)' display='flex' align='start' justify='center' width='auto' style={{ margin: '1em' }}>
+        <SimpleTable
+          tableTitle='Upcoming Appointments'
+          appointmentData={appointments}
+        />
         <div>
           <h3>Clients to call</h3>
           {userData && userData.results ?
-            (userData.results.map((element, index) =>
-            (
-              <Box key={`${element.id.name}_${element.id.value}_${index}`} maxWidth='1240px'>
-                <Card style={{margin: '0.5em', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                  <Flex gap='3' align='center'>
-                    <Avatar
-                      size='3'
-                      src={element.picture.thumbnail}
-                      radius='full'
-                      fallback='T'
-                    />
-                    <Box>
-                      <Text as='div' size='2' weight='bold'>
-                        {`${element.name.first} ${element.name.last}`}
-                      </Text>
-                      <Text as='div' size='2' color='gray'>
-                        Phone: {element.cell} ({element.location.country})
-                      </Text>
-                      <Text as='div' size='2' color='gray'>
-                        Dog: {element.dogName} ({element.dogBreed}, {element.dogSize})
-                      </Text>
-                    </Box>
-                  </Flex>
-                  <Flex>
-                    <CircleIcon width="18" height="18" cursor='pointer' onClick={() => { handleAddNewAppointment(element) }} />
-                  </Flex>
-                </Card>
-              </Box>
+            (userData.results.map((element, index) => (
+                <UserCard 
+                  key={`${element.name}_${element.value}_${index}`}
+                  thumbnail={element.picture.thumbnail}
+                  firstName={element.name.first}
+                  LastName={element.name.last}
+                  cellPhone={element.cell}
+                  country={element.location.country}
+                  dogName={element.dogName}
+                  dogBreed={element.dogBreed}
+                  dogSize={element.dogSize}
+                  onButtonClickCallback={() => handleAddNewAppointment(element)}
+                  />
+              ))
+            ) : (
+              <p>No data available</p>
             )
-            )
-            ) : (<p>No data available</p>)
           }          
         </div>  
       </Grid>
